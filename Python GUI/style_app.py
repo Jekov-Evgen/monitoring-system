@@ -26,11 +26,6 @@ STYLE_WINDOW = """
     padding: 20px;
 """
 
-STYLE_LAYOUT = """
-    margin: 20px;
-    spacing: 15px;
-"""
-
 STYLE_GREETINGS = """
     font-size: 24px;
     font-weight: bold;

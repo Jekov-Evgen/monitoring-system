@@ -23,7 +23,7 @@ class MainWindow:
         info_memory = QtWidgets.QLabel("0%")
         
         video_card = QtWidgets.QLabel("Видеокарта: ")
-        info_video_card = QtWidgets.QLabel("0%")
+        info_video_card = QtWidgets.QLabel("0")
         
         box_h_cpu.addWidget(cpu)
         box_h_cpu.addWidget(info_cpu)
@@ -33,6 +33,13 @@ class MainWindow:
         
         box_h_video_card.addWidget(video_card)
         box_h_video_card.addWidget(info_video_card)
+        
+        box_h_cpu.setSpacing(15)
+        box_h_memory.setSpacing(15)
+        box_h_video_card.setSpacing(15)
+        box_v.setSpacing(20)
+        
+        box_v.setContentsMargins(20, 20, 20, 20)
         
         box_v.addWidget(greetings)
         box_v.addLayout(box_h_cpu)
