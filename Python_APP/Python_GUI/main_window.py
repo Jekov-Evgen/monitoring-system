@@ -1,6 +1,8 @@
 from PySide6 import QtWidgets
 from PySide6 import QtCore
 from Python_GUI.style_app import  STYLE_WINDOW, STYLE_NAME, STYLE_INFO, STYLE_GREETINGS
+from Python_INFO.transfer_of_information import CPU
+from time import sleep
 
 class MainWindow:
     def __init__(self) -> None:
@@ -17,7 +19,7 @@ class MainWindow:
         greetings.setAlignment(QtCore.Qt.AlignCenter)
         
         cpu = QtWidgets.QLabel("Процессор: ")
-        info_cpu = QtWidgets.QLabel("0%")
+        self.info_cpu = QtWidgets.QLabel("0%")
         
         memory = QtWidgets.QLabel("Память: ")
         info_memory = QtWidgets.QLabel("0%")
@@ -26,7 +28,7 @@ class MainWindow:
         info_video_card = QtWidgets.QLabel("0")
         
         box_h_cpu.addWidget(cpu)
-        box_h_cpu.addWidget(info_cpu)
+        box_h_cpu.addWidget(self.info_cpu)
         
         box_h_memory.addWidget(memory)
         box_h_memory.addWidget(info_memory)
@@ -54,12 +56,23 @@ class MainWindow:
         memory.setStyleSheet(STYLE_NAME)
         video_card.setStyleSheet(STYLE_NAME)
         
-        info_cpu.setStyleSheet(STYLE_INFO)
+        self.info_cpu.setStyleSheet(STYLE_INFO)
         info_memory.setStyleSheet(STYLE_INFO)
         info_video_card.setStyleSheet(STYLE_INFO)
+        
+        self.set_info()
         
         self.window.setLayout(box_v)
         
     def run(self):
         self.window.show()
         self.app.exec()
+        
+    def set_info(self):
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.update_info)
+        self.timer.start(2000)
+    
+    def update_info(self):
+        info_CPU = CPU()
+        self.info_cpu.setText(f"{info_CPU.info_CPU()}%")
