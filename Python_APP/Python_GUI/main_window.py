@@ -1,6 +1,6 @@
 from PySide6 import QtWidgets
 from PySide6 import QtCore
-from style_app import  STYLE_WINDOW, STYLE_NAME, STYLE_INFO, STYLE_GREETINGS
+from Python_GUI.style_app import  STYLE_WINDOW, STYLE_NAME, STYLE_INFO, STYLE_GREETINGS
 
 class MainWindow:
     def __init__(self) -> None:
